@@ -1,26 +1,28 @@
 # Avi Yashaya — Beverage Growth & NPD Consulting
 
-## 1) Cover
+## 1) Cover (Personalized Introduction)
 - **Avi Yashaya**
 - Partner & CEO, Mahanakhon Beverages Co., Ltd
 - NPD Consultant for Beverage Growth Across Southeast Asia
+- Built an operating platform behind beverage products delivering **$2M+ annual sell-through**
 - **Contact:** aviyashaya@gmail.com
 
 ---
 
-## 2) Built for Execution, Not Theory
-- 10+ years building beverage brands, operations, and route-to-market systems across Thailand, Laos, and Vietnam.
-- Led launches that now generate over **$2M annual sell-through** in retail and on-trade channels.
-- Hands-on leadership across sourcing, production, packaging, pricing, and distribution (not conceptual-only work).
-- Trusted operator for companies that need profitable market entry and scale in Southeast Asia.
+## 2) The Double-Edged Dilemma for Beverage Producers in Southeast Asia
+- SMEs with ambitions of creating Southeast Asia’s next big beverage brand collide with industrial MOQs and harsh logistical, supply chain, and cash flow crises.
+- Institutional players do their best to keep up with rapidly shifting consumer preferences using data that is often past its best-before date by the end of a lethargic development and launch timeline.
+- Result: one side struggles to scale, the other struggles to adapt, and both lose margin, speed, and market relevance.
+- This is the exact operating gap I help clients close.
 
 ---
 
-## 3) What I Solve for Beverage Companies
-- Build resilient, multi-country beverage supply chains from raw materials to retail shelf.
-- Design and validate product-market fit across **Brewery, Distillery, and RTD** portfolios.
-- Convert distributor conversations into measurable listings, volume, and margin expansion.
-- De-risk new market entries with local manufacturing, regulatory, and channel execution plans.
+## 3) Actionable System I Implement (Built from 10+ Years in Market)
+- **Step 1 — Partner Stack:** leverage the region’s strongest strategic partners for R&D, production, packaging, and route to market.
+- **Step 2 — MOQ-Aware Build Plan:** sequence pilot-to-scale production in Thailand and Vietnam across Brewery, Distillery, and RTD to avoid cash burn.
+- **Step 3 — Supply Continuity by Design:** lock critical raw material flow (including hops from USA and New Zealand) with quality/spec alignment and dual-lane planning.
+- **Step 4 — Commercial Math:** build channel-specific price architecture and margin logic before launch, not after discounting pressure starts.
+- **Step 5 — Execution Cadence:** run launch governance that shortens the development-to-shelf cycle and keeps decisions tied to live market signals.
 
 ---
 
@@ -103,6 +105,7 @@
 
 ## 11) Call to Action
 - **Let’s build your next profitable beverage platform in Southeast Asia.**
+- Let’s leverage the region’s best strategic partners for R&D, production, and route to market, and develop systems that bring Asia’s next big beverage to life.
 - Avi Yashaya  
   Partner & CEO, Mahanakhon Beverages Co., Ltd  
   NPD Consultant  

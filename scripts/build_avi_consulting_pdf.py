@@ -46,6 +46,8 @@ def draw_cover(c):
     c.setFont("Helvetica", 22)
     c.drawString(MARGIN_X, 340, "Partner & CEO, Mahanakhon Beverages Co., Ltd")
     c.drawString(MARGIN_X, 310, "NPD Consultant for Beverage Growth Across Southeast Asia")
+    c.setFont("Helvetica-Bold", 18)
+    c.drawString(MARGIN_X, 275, "Built an operating platform behind products delivering $2M+ annual sell-through")
 
     c.setFillColor(NAVY)
     c.setFont("Helvetica-Bold", 16)
@@ -157,26 +159,27 @@ def deck_data():
     return [
         ("cover",),
         (
-            "Profile",
-            "Built for Execution, Not Theory",
+            "Market Reality",
+            "The Double-Edged Dilemma for Beverage Producers in Southeast Asia",
             [
-                "10+ years building beverage brands, operations, and route-to-market systems across Thailand, Laos, and Vietnam.",
-                "Led launches that now generate over $2M annual sell-through in retail and on-trade channels.",
-                "Hands-on leadership across sourcing, production, packaging, pricing, and distribution.",
-                "Trusted operator for companies that need profitable market entry and scale in Southeast Asia.",
+                "SMEs with ambitions of building Southeast Asia's next big beverage brand collide with industrial MOQs and harsh logistical, supply chain, and cash flow crises.",
+                "Institutional players struggle to keep up with fast consumer shifts because their data is often past its best-before date by the end of a slow development timeline.",
+                "Result: one side cannot scale efficiently, the other cannot adapt fast enough, and both lose speed, margin, and market relevance.",
+                "This is the exact operating gap I help clients close.",
             ],
             None,
         ),
         (
-            "Value Proposition",
-            "What Enterprise Beverage Teams Bring Me In To Solve",
+            "Action Plan",
+            "Actionable System I Implement (Built from 10+ Years in Market)",
             [
-                "Build a resilient, multi-country beverage supply chain from raw materials to retail shelf.",
-                "Design and validate product-market fit for Beer, Spirits, and RTD portfolios in Southeast Asia.",
-                "Convert distributor conversations into measurable listings, volume, and margin expansion.",
-                "De-risk new market entries with local manufacturing, regulatory, and channel execution plans.",
+                "Step 1 - Partner stack: leverage the region's strongest strategic partners for R&D, production, packaging, and route to market.",
+                "Step 2 - MOQ-aware build plan: sequence pilot-to-scale production in Thailand and Vietnam across Brewery, Distillery, and RTD to avoid cash burn.",
+                "Step 3 - Supply continuity by design: lock critical raw material flow, including hops from USA and New Zealand, with quality/spec alignment and dual-lane planning.",
+                "Step 4 - Commercial math: build channel-specific price architecture and margin logic before launch, not after discounting pressure starts.",
+                "Step 5 - Execution cadence: run launch governance that shortens development-to-shelf cycles and keeps decisions tied to live market signals.",
             ],
-            None,
+            "Let's leverage the region's best strategic partners and build systems that bring Asia's next big beverage to life.",
         ),
         (
             "Global Supply Chain",
@@ -289,7 +292,7 @@ def deck_data():
                 "NPD Consultant",
                 "Email: aviyashaya@gmail.com",
             ],
-            "Available for consulting mandates with larger beverage companies and growth-focused regional operators.",
+            "Let's leverage the region's best strategic partners for R&D, production, and route to market to bring Asia's next big beverage to life.",
         ),
     ]
 
