@@ -1,12 +1,19 @@
 from pathlib import Path
 
 from reportlab.lib.colors import Color, HexColor, white
-from reportlab.lib.utils import simpleSplit
+from reportlab.lib.utils import ImageReader, simpleSplit
 from reportlab.pdfgen import canvas
 
 
 OUTPUT = Path("/workspace/decks/avi-yashaya-consulting-deck.pdf")
 LDF_OUTPUT = Path("/workspace/decks/avi-yashaya-consulting-deck.ldf")
+LOGO_PATH = Path("/workspace/assets/logos/mahanakhon-brewery-logo-hd.jpeg")
+CONCEPT_IMAGE_DIR = Path("/workspace/assets/concepts")
+CONCEPT_IMAGES = [
+    ("PHANYA", "Laos Sour Mash Whiskey", "phanya-laos-sour-mash-whiskey"),
+    ("TWO PALMS HAZY", "Tropical Hazy IPA", "two-palms-tropical-hazy-ipa"),
+    ("SHIMAPAN", "Highball Club", "shimapan-highball-club"),
+]
 
 PAGE_WIDTH = 960
 PAGE_HEIGHT = 540
@@ -32,6 +39,30 @@ def draw_wrapped_text(c, text, x, y, max_width, font_name="Helvetica", font_size
     return current_y
 
 
+def draw_logo_badge(c):
+    badge_x, badge_y, badge_w, badge_h = 748, 430, 172, 72
+    c.setFillColor(white)
+    c.setStrokeColor(HexColor("#D8DFE8"))
+    c.rect(badge_x, badge_y, badge_w, badge_h, fill=1, stroke=1)
+
+    if LOGO_PATH.exists():
+        logo = ImageReader(str(LOGO_PATH))
+        c.drawImage(logo, badge_x + 8, badge_y + 8, width=156, height=56, preserveAspectRatio=True, anchor="c")
+    else:
+        c.setFillColor(NAVY)
+        c.setFont("Helvetica-Bold", 11)
+        c.drawCentredString(badge_x + badge_w / 2, badge_y + 40, "Mahanakhon")
+        c.drawCentredString(badge_x + badge_w / 2, badge_y + 24, "Brewery")
+
+
+def resolve_concept_image(slug):
+    for ext in ("jpg", "jpeg", "png", "webp"):
+        path = CONCEPT_IMAGE_DIR / f"{slug}.{ext}"
+        if path.exists():
+            return path
+    return None
+
+
 def draw_cover(c):
     c.setFillColor(NAVY)
     c.rect(0, 0, PAGE_WIDTH, PAGE_HEIGHT, fill=1, stroke=0)
@@ -48,6 +79,7 @@ def draw_cover(c):
     c.drawString(MARGIN_X, 310, "NPD Consultant for Beverage Growth Across Southeast Asia")
     c.setFont("Helvetica-Bold", 18)
     c.drawString(MARGIN_X, 275, "Built an operating platform behind products delivering $2M+ annual sell-through")
+    draw_logo_badge(c)
 
     c.setFillColor(NAVY)
     c.setFont("Helvetica-Bold", 16)
@@ -155,6 +187,60 @@ def draw_two_column(c, heading, title, left_title, left_points, right_title, rig
     draw_points(right_x + 16, right_points)
 
 
+def draw_concept_gallery(c):
+    c.setFillColor(LIGHT)
+    c.rect(0, 0, PAGE_WIDTH, PAGE_HEIGHT, fill=1, stroke=0)
+
+    c.setFillColor(NAVY)
+    c.rect(0, PAGE_HEIGHT - 38, PAGE_WIDTH, 38, fill=1, stroke=0)
+    c.setFillColor(white)
+    c.setFont("Helvetica-Bold", 14)
+    c.drawString(20, PAGE_HEIGHT - 25, "Brand + Concepts")
+
+    c.setFillColor(NAVY)
+    c.setFont("Helvetica-Bold", 28)
+    c.drawString(MARGIN_X, PAGE_HEIGHT - 84, "Mahanakhon Brand Identity + Product Concepts")
+
+    c.setFont("Helvetica", 12)
+    c.setFillColor(SLATE)
+    c.drawString(MARGIN_X, PAGE_HEIGHT - 104, "Integrates sourced logo treatment with concept-ready visual placements.")
+    draw_logo_badge(c)
+
+    card_y = 62
+    card_w = 286
+    card_h = 384
+    x_positions = [24, 337, 650]
+
+    for idx, (title, subtitle, slug) in enumerate(CONCEPT_IMAGES):
+        x = x_positions[idx]
+        c.setFillColor(white)
+        c.setStrokeColor(HexColor("#D8DFE8"))
+        c.rect(x, card_y, card_w, card_h, fill=1, stroke=1)
+
+        image_path = resolve_concept_image(slug)
+        img_x = x + 12
+        img_y = card_y + 68
+        img_w = card_w - 24
+        img_h = 278
+        if image_path and image_path.exists():
+            image = ImageReader(str(image_path))
+            c.drawImage(image, img_x, img_y, width=img_w, height=img_h, preserveAspectRatio=True, anchor="c")
+        else:
+            c.setFillColor(HexColor("#E8EDF4"))
+            c.rect(img_x, img_y, img_w, img_h, fill=1, stroke=0)
+            c.setFillColor(SLATE)
+            c.setFont("Helvetica", 10)
+            c.drawCentredString(x + card_w / 2, img_y + 145, "Concept image placeholder")
+            c.drawCentredString(x + card_w / 2, img_y + 129, f"Add: assets/concepts/{slug}.[jpg|jpeg|png|webp]")
+
+        c.setFillColor(NAVY)
+        c.setFont("Helvetica-Bold", 14)
+        c.drawCentredString(x + card_w / 2, card_y + 44, title)
+        c.setFont("Helvetica", 11)
+        c.setFillColor(SLATE)
+        c.drawCentredString(x + card_w / 2, card_y + 26, subtitle)
+
+
 def deck_data():
     return [
         ("cover",),
@@ -181,6 +267,7 @@ def deck_data():
             ],
             "Let's leverage the region's best strategic partners and build systems that bring Asia's next big beverage to life.",
         ),
+        ("concept_gallery",),
         (
             "Global Supply Chain",
             "Hyper-Specific Operating Model: Source Global, Produce Local, Sell Regional",
@@ -306,6 +393,8 @@ def build_pdf():
 
         if data[0] == "cover":
             draw_cover(c)
+        elif data[0] == "concept_gallery":
+            draw_concept_gallery(c)
         elif data[0] == "two_column":
             _, heading, title, left_title, left_points, right_title, right_points = data
             draw_two_column(c, heading, title, left_title, left_points, right_title, right_points)

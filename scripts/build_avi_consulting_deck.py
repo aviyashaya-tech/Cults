@@ -7,6 +7,25 @@ from pptx.util import Inches, Pt
 
 
 OUTPUT_PATH = Path("/workspace/decks/avi-yashaya-consulting-deck.pptx")
+LOGO_PATH = Path("/workspace/assets/logos/mahanakhon-brewery-logo-hd.jpeg")
+CONCEPT_IMAGE_DIR = Path("/workspace/assets/concepts")
+CONCEPT_IMAGES = [
+    {
+        "title": "PHANYA",
+        "subtitle": "Laos Sour Mash Whiskey",
+        "slug": "phanya-laos-sour-mash-whiskey",
+    },
+    {
+        "title": "TWO PALMS HAZY",
+        "subtitle": "Tropical Hazy IPA",
+        "slug": "two-palms-tropical-hazy-ipa",
+    },
+    {
+        "title": "SHIMAPAN",
+        "subtitle": "Highball Club",
+        "slug": "shimapan-highball-club",
+    },
+]
 
 
 NAVY = RGBColor(18, 35, 63)
@@ -40,6 +59,34 @@ def add_header_bar(slide, label):
     run.font.color.rgb = WHITE
     p.alignment = PP_ALIGN.LEFT
     tf.margin_left = Inches(0.25)
+
+
+def add_logo_badge(slide):
+    badge = slide.shapes.add_shape(1, Inches(10.35), Inches(0.72), Inches(2.25), Inches(1.18))
+    badge.fill.solid()
+    badge.fill.fore_color.rgb = WHITE
+    badge.line.color.rgb = RGBColor(216, 223, 232)
+
+    if LOGO_PATH.exists():
+        slide.shapes.add_picture(str(LOGO_PATH), Inches(10.47), Inches(0.79), Inches(2.0), Inches(0.86))
+    else:
+        tf = badge.text_frame
+        tf.clear()
+        p = tf.paragraphs[0]
+        p.text = "Mahanakhon\nBrewery"
+        p.font.name = "Calibri"
+        p.font.size = Pt(14)
+        p.font.bold = True
+        p.font.color.rgb = NAVY
+        p.alignment = PP_ALIGN.CENTER
+
+
+def resolve_concept_image(slug):
+    for ext in ("jpg", "jpeg", "png", "webp"):
+        path = CONCEPT_IMAGE_DIR / f"{slug}.{ext}"
+        if path.exists():
+            return path
+    return None
 
 
 def add_title_slide(prs, title, subtitle, contact):
@@ -83,6 +130,7 @@ def add_title_slide(prs, title, subtitle, contact):
     rr.font.size = Pt(16)
     rr.font.bold = True
     rr.font.color.rgb = NAVY
+    add_logo_badge(slide)
 
 
 def add_bullet_slide(prs, header, title, bullets, footer=None):
@@ -186,6 +234,98 @@ def add_two_column_slide(prs, header, title, left_title, left_points, right_titl
             paragraph.space_after = Pt(10)
 
 
+def add_concept_gallery_slide(prs):
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    add_full_background(slide, LIGHT_BG)
+    add_header_bar(slide, "Brand + Concepts")
+
+    title_box = slide.shapes.add_textbox(Inches(0.7), Inches(0.9), Inches(9.3), Inches(0.8))
+    tf = title_box.text_frame
+    tf.clear()
+    p = tf.paragraphs[0]
+    run = p.add_run()
+    run.text = "Mahanakhon Brand Identity + Product Concepts"
+    run.font.name = "Calibri"
+    run.font.size = Pt(30)
+    run.font.bold = True
+    run.font.color.rgb = NAVY
+
+    subtitle = slide.shapes.add_textbox(Inches(0.7), Inches(1.45), Inches(9.7), Inches(0.45))
+    stf = subtitle.text_frame
+    stf.clear()
+    sp = stf.paragraphs[0]
+    sr = sp.add_run()
+    sr.text = "Integrates the sourced Mahanakhon logo and concept-ready product visual placements."
+    sr.font.name = "Calibri"
+    sr.font.size = Pt(14)
+    sr.font.color.rgb = SLATE
+
+    add_logo_badge(slide)
+
+    card_y = 2.0
+    card_w = 4.05
+    card_h = 4.95
+    card_x_positions = [0.7, 4.64, 8.58]
+
+    for idx, concept in enumerate(CONCEPT_IMAGES):
+        card_x = card_x_positions[idx]
+        card = slide.shapes.add_shape(1, Inches(card_x), Inches(card_y), Inches(card_w), Inches(card_h))
+        card.fill.solid()
+        card.fill.fore_color.rgb = WHITE
+        card.line.color.rgb = RGBColor(216, 223, 232)
+
+        image_path = resolve_concept_image(concept["slug"])
+        if image_path and image_path.exists():
+            slide.shapes.add_picture(
+                str(image_path),
+                Inches(card_x + 0.18),
+                Inches(card_y + 0.2),
+                Inches(card_w - 0.36),
+                Inches(3.9),
+            )
+        else:
+            placeholder = slide.shapes.add_shape(
+                1,
+                Inches(card_x + 0.18),
+                Inches(card_y + 0.2),
+                Inches(card_w - 0.36),
+                Inches(3.9),
+            )
+            placeholder.fill.solid()
+            placeholder.fill.fore_color.rgb = RGBColor(232, 237, 244)
+            placeholder.line.fill.background()
+            ptf = placeholder.text_frame
+            ptf.clear()
+            pp = ptf.paragraphs[0]
+            pp.text = (
+                "Concept image placeholder\n\nAdd one file:\n"
+                f"assets/concepts/{concept['slug']}.jpg|jpeg|png|webp"
+            )
+            pp.font.name = "Calibri"
+            pp.font.size = Pt(12)
+            pp.font.color.rgb = SLATE
+            pp.alignment = PP_ALIGN.CENTER
+
+        caption = slide.shapes.add_textbox(Inches(card_x + 0.18), Inches(6.05), Inches(card_w - 0.36), Inches(0.8))
+        ctf = caption.text_frame
+        ctf.clear()
+        cp = ctf.paragraphs[0]
+        cr = cp.add_run()
+        cr.text = concept["title"]
+        cr.font.name = "Calibri"
+        cr.font.size = Pt(16)
+        cr.font.bold = True
+        cr.font.color.rgb = NAVY
+        cp.alignment = PP_ALIGN.CENTER
+
+        cp2 = ctf.add_paragraph()
+        cp2.text = concept["subtitle"]
+        cp2.font.name = "Calibri"
+        cp2.font.size = Pt(12)
+        cp2.font.color.rgb = SLATE
+        cp2.alignment = PP_ALIGN.CENTER
+
+
 def build_deck():
     prs = Presentation()
     prs.slide_width = Inches(13.33)
@@ -223,6 +363,8 @@ def build_deck():
         ],
         footer="Let's leverage the region's best strategic partners and build systems that bring Asia's next big beverage to life.",
     )
+
+    add_concept_gallery_slide(prs)
 
     add_bullet_slide(
         prs,

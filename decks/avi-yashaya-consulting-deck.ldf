@@ -26,7 +26,21 @@
 
 ---
 
-## 4) Hyper-Specific Global Supply Chain Model
+## 4) Mahanakhon Brand + Product Concept Integration
+- Added a sourced Mahanakhon Brewery logo into the deck’s visual identity treatment.
+- Added a dedicated product concept gallery with three placements:
+  - PHANYA — Laos Sour Mash Whiskey
+  - TWO PALMS HAZY — Tropical Hazy IPA
+  - SHIMAPAN — Highball Club
+- Deck auto-loads concept images from `assets/concepts/` with base names:
+  - `phanya-laos-sour-mash-whiskey`
+  - `two-palms-tropical-hazy-ipa`
+  - `shimapan-highball-club`
+  - (supported extensions: `.jpg`, `.jpeg`, `.png`, `.webp`)
+
+---
+
+## 5) Hyper-Specific Global Supply Chain Model
 - **Raw Materials:** hops sourced from the **USA** and **New Zealand** with quality/spec alignment and cost control.
 - **Production:** partner plants in **Vietnam** and **Thailand** across all beverage categories:
   - Brewery
@@ -38,7 +52,7 @@
 
 ---
 
-## 5) Route-to-Market and Pricing Architecture
+## 6) Route-to-Market and Pricing Architecture
 ### Thailand + Vietnam
 - Channel segmentation by modern trade, convenience, and on-trade.
 - Margin architecture for producer, distributor, and retailer.
@@ -53,7 +67,7 @@
 
 ---
 
-## 6) Relationship Capital Built Over 10 Years
+## 7) Relationship Capital Built Over 10 Years
 ### Supply + Production Side
 - Ingredient and hop suppliers in USA and New Zealand.
 - Beverage manufacturing partners in Thailand and Vietnam.
@@ -66,7 +80,7 @@
 
 ---
 
-## 7) Cross-Category Capability
+## 8) Cross-Category Capability
 - **Brewery:** concept-to-commercialization support for craft and premium beer.
 - **Distillery:** product positioning, production planning, and launch strategy.
 - **RTD:** accelerated product development and scale-up execution.
@@ -74,7 +88,7 @@
 
 ---
 
-## 8) Commercial Proof Points
+## 9) Commercial Proof Points
 - Built and operated systems behind Mahanakhon products generating over **$2M annually** at retail and on-trade.
 - Structured end-to-end operating flow from global ingredient sourcing to regional production.
 - Built export-ready pathways for convenience store channels in Taiwan and Japan.
@@ -82,7 +96,7 @@
 
 ---
 
-## 9) Engagement Models
+## 10) Engagement Models
 ### Advisory + Operating Sprint (30–90 Days)
 - Focused execution for market entry, launch, or supply chain redesign.
 - Includes sourcing, plant strategy, packaging readiness, pricing, and channel plan.
@@ -95,7 +109,7 @@
 
 ---
 
-## 10) Ideal Client Profile
+## 11) Ideal Client Profile
 - Global/regional beverage groups entering Southeast Asia.
 - Beverage businesses needing stronger execution in Thailand, Vietnam, or Laos.
 - Teams expanding across beer, spirits, and RTD using shared infrastructure.
@@ -103,7 +117,7 @@
 
 ---
 
-## 11) Call to Action
+## 12) Call to Action
 - **Let’s build your next profitable beverage platform in Southeast Asia.**
 - Let’s leverage the region’s best strategic partners for R&D, production, and route to market, and develop systems that bring Asia’s next big beverage to life.
 - Avi Yashaya  
