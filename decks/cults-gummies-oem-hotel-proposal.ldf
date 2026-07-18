@@ -11,7 +11,11 @@
 ## 2) Brand world
 - Retro-psychedelic sticker universe built for instant recognition.
 - Distinct motifs: drippy wordmark, rainbow eye, moon face, flowers, and four-point stars.
-- Brand mantra appears as a recurring visual anchor: **Recover like you mean it**.
+- Campaign cues integrated into the brand world:
+  - **Open Your Eyes**
+  - **Something is Coming**
+  - **Believers Only**
+- Brand mantra remains the recurring conversion anchor: **Recover like you mean it**.
 
 ---
 

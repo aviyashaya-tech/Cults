@@ -16,6 +16,8 @@ STAR_ICON = ASSET_DIR / "cults-star-icon.png"
 ROOM_LIFESTYLE = ASSET_DIR / "cults-room-lifestyle.png"
 STICKER_SHEET = ASSET_DIR / "cults-sticker-sheet.png"
 POSTER_MARK = ASSET_DIR / "cults-poster-mark.png"
+OPEN_YOUR_EYES_POSTER = ASSET_DIR / "cults-open-your-eyes-poster.png"
+SOMETHING_COMING_POSTER = ASSET_DIR / "cults-something-is-coming-poster.png"
 
 PAGE_WIDTH = 960
 PAGE_HEIGHT = 540
@@ -111,7 +113,7 @@ def brand_world(c):
     draw_title(c, "Brand world")
     draw_wrapped(
         c,
-        "Distinctive retro-psychedelic language that turns an amenity into a memory.",
+        "Distinctive retro-psychedelic language that turns an amenity into a memory and a shareable hotel moment.",
         56,
         436,
         850,
@@ -120,15 +122,18 @@ def brand_world(c):
         WHITE_TXT,
     )
 
-    draw_card(c, 56, 84, 320, 322, ORANGE)
-    draw_image(c, POSTER_MARK, 66, 94, 300, 302)
+    draw_card(c, 56, 84, 258, 322, ORANGE)
+    draw_image(c, OPEN_YOUR_EYES_POSTER, 64, 92, 242, 306)
 
-    draw_card(c, 396, 84, 510, 322, LIME)
-    draw_image(c, STICKER_SHEET, 406, 94, 490, 302)
+    draw_card(c, 332, 84, 258, 322, PINK)
+    draw_image(c, SOMETHING_COMING_POSTER, 340, 92, 242, 306)
+
+    draw_card(c, 608, 84, 298, 322, LIME)
+    draw_image(c, STICKER_SHEET, 618, 94, 278, 302)
 
     draw_wrapped(
         c,
-        "Icon set: drippy wordmark, moon-face, rainbow eye, floral cues, and a mantra-led sticker system.",
+        "Campaign cues: OPEN YOUR EYES / SOMETHING IS COMING / BELIEVERS ONLY, translated into premium in-room ritual storytelling.",
         56,
         62,
         850,

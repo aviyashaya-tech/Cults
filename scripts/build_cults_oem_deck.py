@@ -16,6 +16,8 @@ STAR_ICON = ASSET_DIR / "cults-star-icon.png"
 ROOM_LIFESTYLE = ASSET_DIR / "cults-room-lifestyle.png"
 STICKER_SHEET = ASSET_DIR / "cults-sticker-sheet.png"
 POSTER_MARK = ASSET_DIR / "cults-poster-mark.png"
+OPEN_YOUR_EYES_POSTER = ASSET_DIR / "cults-open-your-eyes-poster.png"
+SOMETHING_COMING_POSTER = ASSET_DIR / "cults-something-is-coming-poster.png"
 
 
 BG = RGBColor(8, 8, 12)
@@ -198,25 +200,32 @@ def brand_world(prs):
         1.55,
         12.0,
         0.65,
-        ["Distinctive retro-psychedelic language that turns an amenity into a memory."],
+        ["Distinctive retro-psychedelic language that turns an amenity into a memory and a shareable hotel moment."],
         size=14,
         color=WHITE,
         spacing=0,
     )
 
-    if POSTER_MARK.exists():
-        poster = slide.shapes.add_shape(1, Inches(0.9), Inches(2.05), Inches(4.45), Inches(4.95))
+    if OPEN_YOUR_EYES_POSTER.exists():
+        poster = slide.shapes.add_shape(1, Inches(0.9), Inches(2.02), Inches(3.92), Inches(4.98))
         poster.fill.solid()
         poster.fill.fore_color.rgb = CARD
         poster.line.color.rgb = ORANGE
-        slide.shapes.add_picture(str(POSTER_MARK), Inches(1.0), Inches(2.15), Inches(4.25), Inches(4.75))
+        slide.shapes.add_picture(str(OPEN_YOUR_EYES_POSTER), Inches(1.02), Inches(2.14), Inches(3.68), Inches(4.72))
+
+    if SOMETHING_COMING_POSTER.exists():
+        poster2 = slide.shapes.add_shape(1, Inches(5.02), Inches(2.02), Inches(3.92), Inches(4.98))
+        poster2.fill.solid()
+        poster2.fill.fore_color.rgb = CARD
+        poster2.line.color.rgb = PINK
+        slide.shapes.add_picture(str(SOMETHING_COMING_POSTER), Inches(5.14), Inches(2.14), Inches(3.68), Inches(4.72))
 
     if STICKER_SHEET.exists():
-        board = slide.shapes.add_shape(1, Inches(5.55), Inches(2.05), Inches(6.85), Inches(4.95))
+        board = slide.shapes.add_shape(1, Inches(9.15), Inches(2.02), Inches(3.22), Inches(4.98))
         board.fill.solid()
         board.fill.fore_color.rgb = CARD
         board.line.color.rgb = LIME
-        slide.shapes.add_picture(str(STICKER_SHEET), Inches(5.67), Inches(2.17), Inches(6.61), Inches(4.71))
+        slide.shapes.add_picture(str(STICKER_SHEET), Inches(9.27), Inches(2.17), Inches(2.98), Inches(4.68))
 
     add_body_text(
         slide,
@@ -224,7 +233,7 @@ def brand_world(prs):
         7.02,
         12.1,
         0.3,
-        ["Icon set: drippy wordmark, moon-face, rainbow eye, floral cues, and bold mantra-driven sticker system."],
+        ["Campaign cues: OPEN YOUR EYES / SOMETHING IS COMING / BELIEVERS ONLY, translated into premium in-room ritual storytelling."],
         size=11,
         color=MUTED,
         spacing=0,
