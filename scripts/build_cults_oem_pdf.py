@@ -14,6 +14,8 @@ SECONDARY_POUCH = ASSET_DIR / "cults-secondary-pouch.png"
 NEON_BG = ASSET_DIR / "cults-neon-gradient-bg.png"
 STAR_ICON = ASSET_DIR / "cults-star-icon.png"
 ROOM_LIFESTYLE = ASSET_DIR / "cults-room-lifestyle.png"
+STICKER_SHEET = ASSET_DIR / "cults-sticker-sheet.png"
+POSTER_MARK = ASSET_DIR / "cults-poster-mark.png"
 
 PAGE_WIDTH = 960
 PAGE_HEIGHT = 540
@@ -93,6 +95,8 @@ def cover(c):
     c.drawString(54, 282, "Recovery Ritual  -  OEM partnership proposal for boutique and luxury hotels")
 
     draw_image(c, HERO_POUCH, 586, 56, 325, 440)
+    draw_card(c, 54, 32, 176, 134, PINK)
+    draw_image(c, STICKER_SHEET, 62, 40, 160, 118)
 
     c.setFillColor(BG)
     c.setStrokeColor(ORANGE)
@@ -100,6 +104,38 @@ def cover(c):
     c.setFillColor(ORANGE)
     c.setFont("Helvetica-Bold", 10)
     c.drawCentredString(188, 250, "RECOVER LIKE YOU MEAN IT")
+
+
+def brand_world(c):
+    blank_slide(c)
+    draw_title(c, "Brand world")
+    draw_wrapped(
+        c,
+        "Distinctive retro-psychedelic language that turns an amenity into a memory.",
+        56,
+        436,
+        850,
+        "Helvetica",
+        12,
+        WHITE_TXT,
+    )
+
+    draw_card(c, 56, 84, 320, 322, ORANGE)
+    draw_image(c, POSTER_MARK, 66, 94, 300, 302)
+
+    draw_card(c, 396, 84, 510, 322, LIME)
+    draw_image(c, STICKER_SHEET, 406, 94, 490, 302)
+
+    draw_wrapped(
+        c,
+        "Icon set: drippy wordmark, moon-face, rainbow eye, floral cues, and a mantra-led sticker system.",
+        56,
+        62,
+        850,
+        "Helvetica",
+        10,
+        MUTED,
+    )
 
 
 def intro(c):
@@ -355,7 +391,7 @@ def closing(c):
 
 def build_pdf():
     c = canvas.Canvas(str(OUTPUT), pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
-    slides = [cover, intro, who_we_are, market, partners, value_market, value_you, marketing, rollout, closing]
+    slides = [cover, brand_world, intro, who_we_are, market, partners, value_market, value_you, marketing, rollout, closing]
     for idx, fn in enumerate(slides):
         if idx:
             c.showPage()

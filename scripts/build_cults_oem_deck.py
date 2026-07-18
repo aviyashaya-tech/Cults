@@ -14,6 +14,8 @@ SECONDARY_POUCH = ASSET_DIR / "cults-secondary-pouch.png"
 NEON_BG = ASSET_DIR / "cults-neon-gradient-bg.png"
 STAR_ICON = ASSET_DIR / "cults-star-icon.png"
 ROOM_LIFESTYLE = ASSET_DIR / "cults-room-lifestyle.png"
+STICKER_SHEET = ASSET_DIR / "cults-sticker-sheet.png"
+POSTER_MARK = ASSET_DIR / "cults-poster-mark.png"
 
 
 BG = RGBColor(8, 8, 12)
@@ -162,6 +164,13 @@ def cover(prs):
     if HERO_POUCH.exists():
         slide.shapes.add_picture(str(HERO_POUCH), Inches(8.05), Inches(0.85), Inches(4.85), Inches(6.4))
 
+    if STICKER_SHEET.exists():
+        sticker_frame = slide.shapes.add_shape(1, Inches(0.82), Inches(4.96), Inches(2.6), Inches(2.0))
+        sticker_frame.fill.solid()
+        sticker_frame.fill.fore_color.rgb = CARD
+        sticker_frame.line.color.rgb = PINK
+        slide.shapes.add_picture(str(STICKER_SHEET), Inches(0.9), Inches(5.04), Inches(2.44), Inches(1.84))
+
     cta = slide.shapes.add_shape(1, Inches(0.82), Inches(4.4), Inches(4.2), Inches(0.55))
     cta.fill.solid()
     cta.fill.fore_color.rgb = BG
@@ -175,6 +184,51 @@ def cover(prs):
     p.font.size = Pt(12)
     p.font.bold = True
     p.font.color.rgb = ORANGE
+
+
+def brand_world(prs):
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    add_bg(slide)
+    add_meta(slide)
+    add_title(slide, "Brand world")
+
+    add_body_text(
+        slide,
+        0.9,
+        1.55,
+        12.0,
+        0.65,
+        ["Distinctive retro-psychedelic language that turns an amenity into a memory."],
+        size=14,
+        color=WHITE,
+        spacing=0,
+    )
+
+    if POSTER_MARK.exists():
+        poster = slide.shapes.add_shape(1, Inches(0.9), Inches(2.05), Inches(4.45), Inches(4.95))
+        poster.fill.solid()
+        poster.fill.fore_color.rgb = CARD
+        poster.line.color.rgb = ORANGE
+        slide.shapes.add_picture(str(POSTER_MARK), Inches(1.0), Inches(2.15), Inches(4.25), Inches(4.75))
+
+    if STICKER_SHEET.exists():
+        board = slide.shapes.add_shape(1, Inches(5.55), Inches(2.05), Inches(6.85), Inches(4.95))
+        board.fill.solid()
+        board.fill.fore_color.rgb = CARD
+        board.line.color.rgb = LIME
+        slide.shapes.add_picture(str(STICKER_SHEET), Inches(5.67), Inches(2.17), Inches(6.61), Inches(4.71))
+
+    add_body_text(
+        slide,
+        0.9,
+        7.02,
+        12.1,
+        0.3,
+        ["Icon set: drippy wordmark, moon-face, rainbow eye, floral cues, and bold mantra-driven sticker system."],
+        size=11,
+        color=MUTED,
+        spacing=0,
+    )
 
 
 def intro(prs):
@@ -655,6 +709,7 @@ def build_deck():
     prs.slide_height = Inches(7.5)
 
     cover(prs)
+    brand_world(prs)
     intro(prs)
     who_we_are(prs)
     market_opportunity(prs)

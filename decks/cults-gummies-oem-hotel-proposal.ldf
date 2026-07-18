@@ -8,7 +8,14 @@
 
 ---
 
-## 2) Introduction
+## 2) Brand world
+- Retro-psychedelic sticker universe built for instant recognition.
+- Distinct motifs: drippy wordmark, rainbow eye, moon face, flowers, and four-point stars.
+- Brand mantra appears as a recurring visual anchor: **Recover like you mean it**.
+
+---
+
+## 3) Introduction
 ### Brief business overview
 - Cults makes functional gummies for modern travelers who want recovery and deeper sleep without clinical wellness theater.
 
@@ -24,7 +31,7 @@
 
 ---
 
-## 3) Who we are
+## 4) Who we are
 - Cults is a Thai functional gummy brand for guests who want wellness to feel premium, not clinical.
 - For hotels, Cults becomes a guest-facing amenity that supports better sleep, better recovery, and better stay sentiment.
 
@@ -42,7 +49,7 @@
 
 ---
 
-## 4) Market opportunity
+## 5) Market opportunity
 - Sleep tourism is now a major growth theme in premium hospitality.
 - Hotels need low-friction, high-perceived-value amenities.
 
@@ -58,7 +65,7 @@
 
 ---
 
-## 5) Target hotel partners
+## 6) Target hotel partners
 ### Primary
 - Boutique and lifestyle hotels in Bangkok, Phuket, Chiang Mai, Koh Samui
 - Wellness resorts and spa retreats
@@ -74,7 +81,7 @@
 
 ---
 
-## 6) Our value to the market
+## 7) Our value to the market
 - The first true in-room recovery amenity for modern Thailand hospitality.
 
 ### Core offering pillars
@@ -87,7 +94,7 @@
 
 ---
 
-## 7) Our value to you
+## 8) Our value to you
 1. **Guest experience upgrade**  
    A ritual guests use, remember, and talk about.
 2. **Low cost, high perceived value**  
@@ -102,7 +109,7 @@
 
 ---
 
-## 8) Marketing support
+## 9) Marketing support
 ### "Where to find Cults"
 - Partner-hotel feature posts and referral traffic.
 
@@ -119,7 +126,7 @@
 
 ---
 
-## 9) Pilot rollout and commercial model
+## 10) Pilot rollout and commercial model
 ### Phase 1 - 30-day pilot
 - 2-3 room categories
 - 100-300 pouches
@@ -137,7 +144,7 @@
 
 ---
 
-## 10) Closing CTA
+## 11) Closing CTA
 - **Be the first hotel to put deep sleep in every room.**
 - Join the recovery movement with one honest pouch guests remember.
 - **Recover like you mean it.**
