@@ -7,6 +7,13 @@ from pptx.util import Inches, Pt
 
 
 OUTPUT_PATH = Path("/workspace/decks/cults-gummies-oem-hotel-proposal.pptx")
+ASSET_DIR = Path("/workspace/assets/cults-brand")
+LOGO_LOCKUP = ASSET_DIR / "cults-logo-lockup.png"
+HERO_POUCH = ASSET_DIR / "cults-hero-pouch.png"
+SECONDARY_POUCH = ASSET_DIR / "cults-secondary-pouch.png"
+NEON_BG = ASSET_DIR / "cults-neon-gradient-bg.png"
+STAR_ICON = ASSET_DIR / "cults-star-icon.png"
+ROOM_LIFESTYLE = ASSET_DIR / "cults-room-lifestyle.png"
 
 
 BG = RGBColor(8, 8, 12)
@@ -24,6 +31,20 @@ def add_bg(slide, color=BG):
     shape.fill.solid()
     shape.fill.fore_color.rgb = color
     shape.line.fill.background()
+    if NEON_BG.exists():
+        slide.shapes.add_picture(str(NEON_BG), Inches(0), Inches(0), Inches(13.33), Inches(7.5))
+        overlay = slide.shapes.add_shape(1, Inches(0), Inches(0), Inches(13.33), Inches(7.5))
+        overlay.fill.solid()
+        overlay.fill.fore_color.rgb = BG
+        overlay.fill.transparency = 0.32
+        overlay.line.fill.background()
+
+
+def add_brand_motifs(slide):
+    if STAR_ICON.exists():
+        slide.shapes.add_picture(str(STAR_ICON), Inches(0.55), Inches(0.8), Inches(0.22), Inches(0.22))
+        slide.shapes.add_picture(str(STAR_ICON), Inches(12.55), Inches(0.92), Inches(0.18), Inches(0.18))
+        slide.shapes.add_picture(str(STAR_ICON), Inches(12.2), Inches(6.85), Inches(0.18), Inches(0.18))
 
 
 def add_meta(slide):
@@ -46,6 +67,7 @@ def add_meta(slide):
     p.font.name = "Calibri"
     p.font.size = Pt(9)
     p.font.color.rgb = MUTED
+    add_brand_motifs(slide)
 
 
 def add_title(slide, title):
@@ -99,32 +121,36 @@ def cover(prs):
     add_bg(slide)
     add_meta(slide)
 
-    add_body_text(
-        slide,
-        0.78,
-        1.85,
-        8.5,
-        1.2,
-        ["CULTS"],
-        size=64,
-        color=PINK,
-        spacing=0,
-    )
+    if LOGO_LOCKUP.exists():
+        slide.shapes.add_picture(str(LOGO_LOCKUP), Inches(0.72), Inches(1.45), Inches(6.2), Inches(2.0))
+    else:
+        add_body_text(
+            slide,
+            0.78,
+            1.85,
+            8.5,
+            1.2,
+            ["CULTS"],
+            size=64,
+            color=PINK,
+            spacing=0,
+        )
+        add_body_text(
+            slide,
+            0.8,
+            3.05,
+            6,
+            0.6,
+            ["ADAPTOGEN GUMMIES"],
+            size=24,
+            color=LIME,
+            spacing=0,
+        )
+
     add_body_text(
         slide,
         0.8,
-        3.05,
-        6,
-        0.6,
-        ["ADAPTOGEN GUMMIES"],
-        size=24,
-        color=LIME,
-        spacing=0,
-    )
-    add_body_text(
-        slide,
-        0.8,
-        3.6,
+        3.45,
         8.4,
         0.6,
         ["Recovery Ritual  -  OEM partnership proposal for boutique and luxury hotels"],
@@ -132,6 +158,9 @@ def cover(prs):
         color=MUTED,
         spacing=0,
     )
+
+    if HERO_POUCH.exists():
+        slide.shapes.add_picture(str(HERO_POUCH), Inches(8.05), Inches(0.85), Inches(4.85), Inches(6.4))
 
     cta = slide.shapes.add_shape(1, Inches(0.82), Inches(4.4), Inches(4.2), Inches(0.55))
     cta.fill.solid()
@@ -153,6 +182,14 @@ def intro(prs):
     add_bg(slide)
     add_meta(slide)
     add_title(slide, "Introduction")
+
+    if ROOM_LIFESTYLE.exists():
+        slide.shapes.add_picture(str(ROOM_LIFESTYLE), Inches(6.72), Inches(1.72), Inches(5.7), Inches(4.95))
+        overlay = slide.shapes.add_shape(1, Inches(6.72), Inches(1.72), Inches(5.7), Inches(4.95))
+        overlay.fill.solid()
+        overlay.fill.fore_color.rgb = BG
+        overlay.fill.transparency = 0.42
+        overlay.line.fill.background()
 
     add_body_text(
         slide,
@@ -200,6 +237,9 @@ def who_we_are(prs):
     add_bg(slide)
     add_meta(slide)
     add_title(slide, "Who we are")
+
+    if SECONDARY_POUCH.exists():
+        slide.shapes.add_picture(str(SECONDARY_POUCH), Inches(0.12), Inches(3.25), Inches(2.25), Inches(3.75))
 
     add_body_text(
         slide,
@@ -268,6 +308,9 @@ def market_opportunity(prs):
     add_bg(slide)
     add_meta(slide)
     add_title(slide, "Market opportunity")
+
+    if HERO_POUCH.exists():
+        slide.shapes.add_picture(str(HERO_POUCH), Inches(10.95), Inches(1.52), Inches(1.95), Inches(3.15))
 
     add_body_text(
         slide,
@@ -559,6 +602,13 @@ def pilot_rollout(prs):
 def closing(prs):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(slide)
+    if ROOM_LIFESTYLE.exists():
+        slide.shapes.add_picture(str(ROOM_LIFESTYLE), Inches(0), Inches(0), Inches(13.33), Inches(7.5))
+        overlay = slide.shapes.add_shape(1, Inches(0), Inches(0), Inches(13.33), Inches(7.5))
+        overlay.fill.solid()
+        overlay.fill.fore_color.rgb = BG
+        overlay.fill.transparency = 0.55
+        overlay.line.fill.background()
     add_meta(slide)
 
     add_body_text(

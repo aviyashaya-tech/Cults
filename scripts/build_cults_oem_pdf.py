@@ -1,12 +1,19 @@
 from pathlib import Path
 
 from reportlab.lib.colors import HexColor, white
-from reportlab.lib.utils import simpleSplit
+from reportlab.lib.utils import ImageReader, simpleSplit
 from reportlab.pdfgen import canvas
 
 
 OUTPUT = Path("/workspace/decks/cults-gummies-oem-hotel-proposal.pdf")
 LDF_OUTPUT = Path("/workspace/decks/cults-gummies-oem-hotel-proposal.ldf")
+ASSET_DIR = Path("/workspace/assets/cults-brand")
+LOGO_LOCKUP = ASSET_DIR / "cults-logo-lockup.png"
+HERO_POUCH = ASSET_DIR / "cults-hero-pouch.png"
+SECONDARY_POUCH = ASSET_DIR / "cults-secondary-pouch.png"
+NEON_BG = ASSET_DIR / "cults-neon-gradient-bg.png"
+STAR_ICON = ASSET_DIR / "cults-star-icon.png"
+ROOM_LIFESTYLE = ASSET_DIR / "cults-room-lifestyle.png"
 
 PAGE_WIDTH = 960
 PAGE_HEIGHT = 540
@@ -52,25 +59,40 @@ def draw_card(c, x, y, w, h, border):
     c.rect(x, y, w, h, fill=1, stroke=1)
 
 
+def draw_image(c, path, x, y, w, h):
+    if path.exists():
+        img = ImageReader(str(path))
+        c.drawImage(img, x, y, width=w, height=h, preserveAspectRatio=True, anchor="c")
+
+
 def blank_slide(c):
     c.setFillColor(BG)
     c.rect(0, 0, PAGE_WIDTH, PAGE_HEIGHT, fill=1, stroke=0)
+    draw_image(c, NEON_BG, 425, 0, 535, 370)
+    draw_image(c, STAR_ICON, 42, 458, 16, 16)
+    draw_image(c, STAR_ICON, 924, 470, 12, 12)
+    draw_image(c, STAR_ICON, 902, 40, 12, 12)
     draw_meta(c)
 
 
 def cover(c):
     blank_slide(c)
-    c.setFillColor(PINK)
-    c.setFont("Helvetica-Bold", 64)
-    c.drawString(54, 360, "CULTS")
+    if LOGO_LOCKUP.exists():
+        draw_image(c, LOGO_LOCKUP, 44, 300, 365, 140)
+    else:
+        c.setFillColor(PINK)
+        c.setFont("Helvetica-Bold", 64)
+        c.drawString(54, 360, "CULTS")
 
-    c.setFillColor(LIME)
-    c.setFont("Helvetica-Bold", 24)
-    c.drawString(54, 318, "ADAPTOGEN GUMMIES")
+        c.setFillColor(LIME)
+        c.setFont("Helvetica-Bold", 24)
+        c.drawString(54, 318, "ADAPTOGEN GUMMIES")
 
     c.setFillColor(MUTED)
     c.setFont("Helvetica-Oblique", 12)
-    c.drawString(54, 292, "Recovery Ritual  -  OEM partnership proposal for boutique and luxury hotels")
+    c.drawString(54, 282, "Recovery Ritual  -  OEM partnership proposal for boutique and luxury hotels")
+
+    draw_image(c, HERO_POUCH, 586, 56, 325, 440)
 
     c.setFillColor(BG)
     c.setStrokeColor(ORANGE)
@@ -118,6 +140,7 @@ def intro(c):
         MUTED,
     )
 
+    draw_image(c, ROOM_LIFESTYLE, 56, 132, 430, 110)
     draw_card(c, 505, 122, 405, 302, PINK)
     draw_wrapped(c, "What's in the pouch", 525, 398, 360, "Helvetica-Bold", 16, LIME)
     draw_wrapped(c, "Deep Sleep: reishi + ashwagandha + magnesium + passionflower + l-theanine", 525, 366, 360, "Helvetica", 11, WHITE_TXT)
@@ -143,6 +166,8 @@ def who_we_are(c):
     for idx, line in enumerate(["- First night post-flight", "- Post-gym or spa recovery", "- Wind-down after late dinner", "- Early call-time reset"]):
         draw_wrapped(c, line, 56, 304 - (idx * 24), 430, "Helvetica", 11, MUTED)
 
+    draw_image(c, SECONDARY_POUCH, 402, 92, 112, 196)
+
     cards = [
         (505, 286, 190, 130, PINK, "Boutique city hotel", "Amenity drawer, turn-down tray"),
         (716, 286, 194, 130, ORANGE, "Wellness resort", "Spa gift shop, retreat welcome kit"),
@@ -158,6 +183,7 @@ def who_we_are(c):
 def market(c):
     blank_slide(c)
     draw_title(c, "Market opportunity")
+    draw_image(c, HERO_POUCH, 835, 172, 102, 204)
 
     draw_wrapped(
         c,
@@ -305,7 +331,12 @@ def rollout(c):
 
 
 def closing(c):
-    blank_slide(c)
+    c.setFillColor(BG)
+    c.rect(0, 0, PAGE_WIDTH, PAGE_HEIGHT, fill=1, stroke=0)
+    draw_image(c, ROOM_LIFESTYLE, 0, 0, PAGE_WIDTH, PAGE_HEIGHT)
+    c.setFillColor(BG)
+    c.rect(0, 160, PAGE_WIDTH, 250, fill=1, stroke=0)
+    draw_meta(c)
     c.setFillColor(PINK)
     c.setFont("Helvetica-Bold", 42)
     c.drawCentredString(480, 292, "Be the first hotel to put deep sleep in every room.")
